@@ -1,3 +1,4 @@
+<button (click)="goBack()">go back</button>
 <div>
   <table>
     <caption>
@@ -6,7 +7,7 @@
     <tr>
       <th>Id</th>
       <th>Name</th>
-      <th>Hit Points</th>
+      <th>Damage Taken</th>
       <th>Remaining Hit Points</th>
       <th>Advantage?</th>
       <th>Dice Roll</th>
@@ -15,7 +16,7 @@
     <tr *ngFor="let item of dashboardMonsters">
       <td>{{ item.Id }}</td>
       <td>{{ item.Name }}</td>
-      <td>{{ item.Hit_Points }}</td>
+      <td>{{ item.Damage_Taken }}</td>
       <td>{{ item.Remaining_HP }}</td>
       <td>{{ item.Has_Advantage }}</td>
       <td>{{ item.Dice_Roll }}</td>

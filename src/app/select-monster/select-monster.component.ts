@@ -13,6 +13,7 @@ export class SelectMonsterComponent implements OnInit {
   monsters: Observable<Monster[]>;
   selectedMonster: Monster;
   monsters$: Observable<Monster[]>;
+  numberToSummon: number = 1;
   private searchTerms = new Subject<string>();
   constructor(private monsterService: MonsterService) {}
 

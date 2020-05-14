@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MonsterService } from '../monster.service';
 import { Monster } from '../monster';
 import { DashboardItem } from '../dashboarditem';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,23 +13,25 @@ import { DashboardItem } from '../dashboarditem';
 export class DashboardComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private monsterService: MonsterService
+    private monsterService: MonsterService,
+    private location: Location
   ) {}
 
   monster: Monster;
   dashboardMonsters: DashboardItem[] = [];
-  numberOfMonsters: number = 8;
+  numberOfMonsters: number = 1;
   toHitModifier: number;
 
   getMonster(): void {
     const name = this.route.snapshot.paramMap.get('name');
+    this.numberOfMonsters = +this.route.snapshot.paramMap.get('numberToSummon');
     this.monsterService
       .getMonster(name)
       .subscribe((response) => (this.monster = response));
   }
 
   createMonsterTable() {
-    for (let i = 0; i <= this.numberOfMonsters; i++) {
+    for (let i = 1; i <= this.numberOfMonsters; i++) {
       const hpNumber = this.monster.Hit_Points.split(' ', 1);
 
       let newMonster = {
@@ -43,6 +46,10 @@ export class DashboardComponent implements OnInit {
       } as DashboardItem;
       this.dashboardMonsters.push(newMonster);
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   ngOnInit(): void {

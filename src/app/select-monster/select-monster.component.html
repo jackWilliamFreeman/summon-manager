@@ -1,11 +1,22 @@
-<a routerLink="/dashboard/{{ selectedMonster?.name }}">
-  {{ selectedMonster?.name }}
-</a>
+<div>
+  <span style="padding: 5px;">Summon</span>
+  <span style="padding: 5px; width: 50px;"
+    ><input [(ngModel)]="numberToSummon"
+  /></span>
+  <span style="padding: 5px;">of type: {{ selectedMonster?.name }}</span>
+  <button
+    routerLink="/dashboard/{{ selectedMonster?.name }}/{{
+      this.numberToSummon
+    }}"
+    [disabled]="!selectedMonster"
+  >
+    Summon!
+  </button>
+</div>
 <div class="container">
   <div class="fixed">
     <div id="search-component">
       <h4><label for="search-box">Search For Beast Summons</label></h4>
-
       <input #searchBox id="search-box" (input)="search(searchBox.value)" />
     </div>
     <br />

@@ -7,10 +7,17 @@ import { SelectMonsterComponent } from './select-monster/select-monster.componen
 import { HttpClientModule } from '@angular/common/http';
 import { MonsterViewComponent } from './monster-view/monster-view.component';
 import { MonsterSearchComponent } from './monster-search/monster-search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, SelectMonsterComponent, MonsterViewComponent, MonsterSearchComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    SelectMonsterComponent,
+    MonsterViewComponent,
+    MonsterSearchComponent,
+  ],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
