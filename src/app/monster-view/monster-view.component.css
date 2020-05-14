@@ -6,7 +6,11 @@
   border-radius: 7px;
   border-style: solid;
   border-width: 3px;
-  width: 400px;
+  width: 405px;
+  color: #a73335;
+}
+.contentContainer {
+  padding: 2px;
 }
 .gradient {
   background: linear-gradient(10deg, #a73335, white);
@@ -28,6 +32,9 @@
 }
 .red {
   color: #a73335;
+}
+.black {
+  color: black;
 }
 table {
   width: 100%;
