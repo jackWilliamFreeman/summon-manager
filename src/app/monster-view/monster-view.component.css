@@ -1,0 +1,21 @@
+.monsterPic {
+  width: 400px;
+  height: 400px;
+}
+.monsterBorder {
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 2px;
+  width: fit-content;
+  padding-left: 5px;
+}
+.monsterProperty {
+  padding: 5px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  min-width: 30px;
+}

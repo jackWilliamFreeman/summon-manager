@@ -1,0 +1,11 @@
+<app-monster-view [monster]="selectedMonster"></app-monster-view>
+<app-monster-search></app-monster-search>
+
+<p>select-monster works!</p>
+<div>Monsters Are:</div>
+<ul>
+  <li *ngFor="let monster of monsters" (click)="onSelect(monster)">
+    <div>{{ monster.name }}</div>
+    <!--<span>Traits</span><span innerHtml="{{ monster.Traits }}"></span>-->
+  </li>
+</ul>

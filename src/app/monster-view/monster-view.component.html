@@ -1,0 +1,24 @@
+<div class="monsterBorder">
+  <div style="padding-top: 5px; padding-left: 5px;">
+    <span class="monsterProperty">Name: </span><span>{{ monster?.name }}</span>
+  </div>
+  <div style="padding: 5px;">
+    <span class="monsterProperty">Type: </span><span>{{ monster?.meta }}</span>
+  </div>
+  <table>
+    <tr>
+      <th style="min-width: 130px;">AC</th>
+      <th>Str</th>
+      <th>Hit Points</th>
+    </tr>
+    <tr>
+      <td>{{ monster?.Armor_Class }}</td>
+      <td>{{ monster?.STR }}</td>
+      <td>{{ monster?.Hit_Points }}</td>
+    </tr>
+  </table>
+  <div>
+    <img *ngIf="monster" class="monsterPic" src="{{ monster.img_url }}" />
+    <div *ngIf="!monster" class="monsterPic">Select a Beast to View</div>
+  </div>
+</div>
