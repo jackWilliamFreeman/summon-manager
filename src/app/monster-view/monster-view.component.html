@@ -1,24 +1,79 @@
-<div class="monsterBorder">
-  <div style="padding-top: 5px; padding-left: 5px;">
-    <span class="monsterProperty">Name: </span><span>{{ monster?.name }}</span>
-  </div>
-  <div style="padding: 5px;">
-    <span class="monsterProperty">Type: </span><span>{{ monster?.meta }}</span>
-  </div>
-  <table>
-    <tr>
-      <th style="min-width: 130px;">AC</th>
-      <th>Str</th>
-      <th>Hit Points</th>
-    </tr>
-    <tr>
-      <td>{{ monster?.Armor_Class }}</td>
-      <td>{{ monster?.STR }}</td>
-      <td>{{ monster?.Hit_Points }}</td>
-    </tr>
-  </table>
+<div *ngIf="monster" class="monsterBorder">
   <div>
-    <img *ngIf="monster" class="monsterPic" src="{{ monster.img_url }}" />
-    <div *ngIf="!monster" class="monsterPic">Select a Beast to View</div>
+    <img class="monsterPic" src="{{ monster.img_url }}" />
+  </div>
+  <div
+    contenteditable="true"
+    style="
+      width: 400px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+    "
+  >
+    <div class="name">{{ monster?.name }}</div>
+    <div class="description">{{ monster?.meta }}</div>
+
+    <div class="gradient"></div>
+
+    <div class="red">
+      <div>
+        <span class="bold red">Armor Class</span
+        ><span> {{ monster?.Armor_Class }}</span>
+      </div>
+      <div>
+        <span class="bold red">Hit Points</span
+        ><span> {{ monster?.Hit_Points }}</span>
+      </div>
+      <div>
+        <span class="bold red">Speed</span><span> {{ monster?.Speed }}</span>
+      </div>
+    </div>
+
+    <div class="gradient"></div>
+
+    <table>
+      <tr>
+        <th>STR</th>
+        <th>DEX</th>
+        <th>CON</th>
+        <th>INT</th>
+        <th>WIS</th>
+        <th>CHA</th>
+      </tr>
+      <tr>
+        <td>{{ monster?.STR }} {{ monster?.STR_mod }}</td>
+        <td>{{ monster?.DEX }} {{ monster?.DEX_mod }}</td>
+        <td>{{ monster?.CON }} {{ monster?.CON_mod }}</td>
+        <td>{{ monster?.INT }} {{ monster?.INT_mod }}</td>
+        <td>{{ monster?.WIS }} {{ monster?.WIS_mod }}</td>
+        <td>{{ monster?.CHA }} {{ monster?.CHA_mod }}</td>
+      </tr>
+    </table>
+
+    <div class="gradient"></div>
+
+    <div>
+      <span class="bold">Senses</span><span> {{ monster?.Senses }}</span>
+    </div>
+    <div>
+      <span class="bold">Languages</span><span> {{ monster?.Languages }}</span>
+    </div>
+    <div>
+      <span class="bold">Challenge</span><span> {{ monster?.Languages }}</span>
+    </div>
+
+    <div class="gradient"></div>
+
+    <div class="actions red">Traits</div>
+
+    <div class="hr"></div>
+
+    <span class="attack" innerHtml="{{ monster?.Traits }}"></span>
+
+    <div class="actions red">Actions</div>
+
+    <div class="hr"></div>
+
+    <span class="attack" innerHtml="{{ monster?.Actions }}"></span>
   </div>
 </div>
