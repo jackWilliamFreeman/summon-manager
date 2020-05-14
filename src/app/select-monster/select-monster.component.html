@@ -1,11 +1,23 @@
-<app-monster-view [monster]="selectedMonster"></app-monster-view>
-<app-monster-search></app-monster-search>
+<a routerLink="/dashboard/{{ selectedMonster?.name }}">
+  {{ selectedMonster?.name }}
+</a>
+<div class="container">
+  <div class="fixed">
+    <div id="search-component">
+      <h4><label for="search-box">Search For Beast Summons</label></h4>
 
-<p>select-monster works!</p>
-<div>Monsters Are:</div>
-<ul>
-  <li *ngFor="let monster of monsters" (click)="onSelect(monster)">
-    <div>{{ monster.name }}</div>
-    <!--<span>Traits</span><span innerHtml="{{ monster.Traits }}"></span>-->
-  </li>
-</ul>
+      <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+    </div>
+    <br />
+    <div>Monsters Are:</div>
+    <ul>
+      <li *ngFor="let monster of monsters$ | async" (click)="onSelect(monster)">
+        <div>{{ monster.name }}</div>
+        <!--<span>Traits</span><span innerHtml="{{ monster.Traits }}"></span>-->
+      </li>
+    </ul>
+  </div>
+  <div class="flex-item">
+    <app-monster-view [monster]="selectedMonster"></app-monster-view>
+  </div>
+</div>

@@ -20,4 +20,10 @@ export class MonsterService {
     );
     return of(filteredMonsters);
   }
+
+  getMonster(name: string): Observable<Monster> {
+    var monsters = (_monsters as any).default as Monster[];
+    var monster = monsters.find((m) => m.name == name);
+    return of(monster);
+  }
 }

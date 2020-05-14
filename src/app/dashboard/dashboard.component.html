@@ -1,1 +1,27 @@
-<p>dashboard works!</p>
+<div>
+  <table>
+    <caption>
+      Control your Summons below
+    </caption>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Hit Points</th>
+      <th>Remaining Hit Points</th>
+      <th>Advantage?</th>
+      <th>Dice Roll</th>
+      <th>Critical Hit?</th>
+    </tr>
+    <tr *ngFor="let item of dashboardMonsters">
+      <td>{{ item.Id }}</td>
+      <td>{{ item.Name }}</td>
+      <td>{{ item.Hit_Points }}</td>
+      <td>{{ item.Remaining_HP }}</td>
+      <td>{{ item.Has_Advantage }}</td>
+      <td>{{ item.Dice_Roll }}</td>
+      <td>{{ item.Critical }}</td>
+    </tr>
+  </table>
+</div>
+
+<app-monster-view [monster]="monster"></app-monster-view>

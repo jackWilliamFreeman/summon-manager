@@ -1,7 +1,7 @@
-<div *ngIf="monster" class="monsterBorder">
+<div class="monsterBorder">
   <div class="contentContainer">
     <div>
-      <img class="monsterPic" src="{{ monster.img_url }}" />
+      <img class="monsterPic" src="{{ monster?.img_url }}" />
     </div>
     <div
       contenteditable="true"
