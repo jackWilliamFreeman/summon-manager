@@ -1,4 +1,10 @@
-<button (click)="goBack()">go back</button>
+<div style="padding: 5px;">
+  <button (click)="goBack()">go back</button>
+</div>
+<div style="padding: 5px;">
+  <span style="padding-right: 5px;">Set Temp HP of Summons</span>
+  <input [(ngModel)]="tempHp" (change)="updateMonstersWithTempHp()" />
+</div>
 <div>
   <table>
     <caption>
@@ -9,6 +15,7 @@
       <th>Name</th>
       <th>Damage Taken</th>
       <th>Remaining Hit Points</th>
+      <th>Temp Hit Points</th>
       <th>Advantage?</th>
       <th>Dice Roll</th>
       <th>Critical Hit?</th>
@@ -18,6 +25,7 @@
       <td>{{ item.Name }}</td>
       <td>{{ item.Damage_Taken }}</td>
       <td>{{ item.Remaining_HP }}</td>
+      <td>{{ item.Temp_HP }}</td>
       <td>{{ item.Has_Advantage }}</td>
       <td>{{ item.Dice_Roll }}</td>
       <td>{{ item.Critical }}</td>

@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   dashboardMonsters: DashboardItem[] = [];
   numberOfMonsters: number = 1;
   toHitModifier: number;
+  tempHp: number = 0;
 
   getMonster(): void {
     const name = this.route.snapshot.paramMap.get('name');
@@ -28,6 +29,12 @@ export class DashboardComponent implements OnInit {
     this.monsterService
       .getMonster(name)
       .subscribe((response) => (this.monster = response));
+  }
+
+  updateMonstersWithTempHp() {
+    this.dashboardMonsters.forEach((monster) => {
+      monster.Temp_HP = this.tempHp;
+    });
   }
 
   createMonsterTable() {
@@ -43,6 +50,7 @@ export class DashboardComponent implements OnInit {
         Remaining_HP: +hpNumber[0],
         Dice_Roll: 1,
         Critical: false,
+        Temp_HP: this.tempHp,
       } as DashboardItem;
       this.dashboardMonsters.push(newMonster);
     }

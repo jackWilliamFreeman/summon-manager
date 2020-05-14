@@ -7,4 +7,5 @@ export interface DashboardItem {
   Remaining_HP: number;
   Dice_Roll: number;
   Critical: boolean;
+  Temp_HP: number;
 }
