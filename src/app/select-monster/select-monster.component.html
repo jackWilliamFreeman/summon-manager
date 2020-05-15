@@ -5,6 +5,7 @@
   /></span>
   <span style="padding: 5px;">of type: {{ selectedMonster?.name }}</span>
   <button
+    mat-button
     routerLink="/dashboard/{{ selectedMonster?.name }}/{{
       this.numberToSummon
     }}"

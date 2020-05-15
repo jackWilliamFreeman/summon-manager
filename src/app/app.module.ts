@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MonsterViewComponent } from './monster-view/monster-view.component';
 import { MonsterSearchComponent } from './monster-search/monster-search.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     MonsterViewComponent,
     MonsterSearchComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
