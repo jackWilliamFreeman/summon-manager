@@ -1,11 +1,11 @@
 export interface DashboardItem {
-  Id: Number;
-  Name: string;
-  Hit_Points: number;
-  Has_Advantage: boolean;
-  Damage_Taken: number;
-  Remaining_HP: number;
-  Dice_Roll: number;
-  Critical: boolean;
-  Temp_HP: number;
+  id: Number;
+  name: string;
+  hit_Points: number;
+  has_Advantage: boolean;
+  damage_Taken: number;
+  remaining_HP: number;
+  dice_Roll: number;
+  critical: boolean;
+  temp_HP: number;
 }

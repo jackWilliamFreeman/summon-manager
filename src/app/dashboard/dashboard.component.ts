@@ -33,8 +33,14 @@ export class DashboardComponent implements OnInit {
 
   updateMonstersWithTempHp() {
     this.dashboardMonsters.forEach((monster) => {
-      monster.Temp_HP = this.tempHp;
+      monster.temp_HP = this.tempHp;
     });
+  }
+
+  rollAttacksForMonsters() {
+    this.dashboardMonsters.forEach(
+      (monster) => (monster.dice_Roll = Math.floor(Math.random() * 20) + 1)
+    );
   }
 
   createMonsterTable() {
@@ -42,15 +48,15 @@ export class DashboardComponent implements OnInit {
       const hpNumber = this.monster.Hit_Points.split(' ', 1);
 
       let newMonster = {
-        Id: i,
-        Name: this.monster.name,
-        Hit_Points: +hpNumber[0],
-        Damage_Taken: 0,
-        Has_Advantage: false,
-        Remaining_HP: +hpNumber[0],
-        Dice_Roll: 1,
-        Critical: false,
-        Temp_HP: this.tempHp,
+        id: i,
+        name: this.monster.name,
+        hit_Points: +hpNumber[0],
+        damage_Taken: 0,
+        has_Advantage: false,
+        remaining_HP: +hpNumber[0],
+        dice_Roll: 1,
+        critical: false,
+        temp_HP: this.tempHp,
       } as DashboardItem;
       this.dashboardMonsters.push(newMonster);
     }

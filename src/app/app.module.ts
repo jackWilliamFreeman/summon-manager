@@ -9,6 +9,11 @@ import { MonsterViewComponent } from './monster-view/monster-view.component';
 import { MonsterSearchComponent } from './monster-search/monster-search.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MonsterHpDashboardComponent } from './monster-hp-dashboard/monster-hp-dashboard.component';
+import { MonsterAttackDashboardComponent } from './monster-attack-dashboard/monster-attack-dashboard.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -17,8 +22,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SelectMonsterComponent,
     MonsterViewComponent,
     MonsterSearchComponent,
+    MonsterHpDashboardComponent,
+    MonsterAttackDashboardComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

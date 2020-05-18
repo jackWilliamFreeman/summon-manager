@@ -2,35 +2,19 @@
   <button (click)="goBack()">go back</button>
 </div>
 <div style="padding: 5px;">
+  <button (click)="rollAttacksForMonsters()">roll attacks</button>
+</div>
+<div style="padding: 5px;">
   <span style="padding-right: 5px;">Set Temp HP of Summons</span>
   <input [(ngModel)]="tempHp" (change)="updateMonstersWithTempHp()" />
 </div>
-<div>
-  <table>
-    <caption>
-      Control your Summons below
-    </caption>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Damage Taken</th>
-      <th>Remaining Hit Points</th>
-      <th>Temp Hit Points</th>
-      <th>Advantage?</th>
-      <th>Dice Roll</th>
-      <th>Critical Hit?</th>
-    </tr>
-    <tr *ngFor="let item of dashboardMonsters">
-      <td>{{ item.Id }}</td>
-      <td>{{ item.Name }}</td>
-      <td>{{ item.Damage_Taken }}</td>
-      <td>{{ item.Remaining_HP }}</td>
-      <td>{{ item.Temp_HP }}</td>
-      <td>{{ item.Has_Advantage }}</td>
-      <td>{{ item.Dice_Roll }}</td>
-      <td>{{ item.Critical }}</td>
-    </tr>
-  </table>
-</div>
 
+<app-monster-attack-dashboard
+  [dashboardMonsters]="dashboardMonsters"
+></app-monster-attack-dashboard>
+<br />
+<app-monster-hp-dashboard
+  [dashboardMonsters]="dashboardMonsters"
+></app-monster-hp-dashboard>
+<br />
 <app-monster-view [monster]="monster"></app-monster-view>
