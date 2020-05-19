@@ -3,6 +3,12 @@ import { Monster } from '../monster';
 import { MonsterService } from '../monster.service';
 import { Subject, Observable, zip } from 'rxjs';
 import { distinctUntilChanged, switchMap, debounceTime } from 'rxjs/operators';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { SelectMonsterDialogueComponent } from './select-monster-dialogue/select-monster-dialogue.component';
 
 @Component({
   selector: 'app-select-monster',
@@ -13,10 +19,12 @@ export class SelectMonsterComponent implements OnInit {
   selectedMonster: Monster;
   monsters: Monster[];
   monsters$: Observable<Monster[]>;
-  numberToSummon: number = 1;
-  columnsToDisplay = ['name'];
+  columnsToDisplay = ['name', 'summon'];
   private searchTerms = new Subject<string>();
-  constructor(private monsterService: MonsterService) {}
+  constructor(
+    private monsterService: MonsterService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.monsters$ = this.searchTerms.pipe(
@@ -32,6 +40,13 @@ export class SelectMonsterComponent implements OnInit {
     );
 
     setTimeout(() => this.search(''), 0);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SelectMonsterDialogueComponent, {
+      width: '250px',
+      data: { number: 1, name: this.selectedMonster.name },
+    });
   }
 
   // Push a search term into the observable stream.

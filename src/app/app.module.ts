@@ -16,6 +16,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { AboutComponent } from './about/about.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SelectMonsterDialogueComponent } from './select-monster/select-monster-dialogue/select-monster-dialogue.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +32,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MonsterSearchComponent,
     MonsterHpDashboardComponent,
     MonsterAttackDashboardComponent,
+    AboutComponent,
+    SelectMonsterDialogueComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +46,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatInputModule,
     MatButtonModule,
     MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -12,6 +12,15 @@
 .contentContainer {
   padding: 2px;
 }
+.monsterPicPlaceholder {
+  width: 400px;
+  height: 400px;
+  background-color: lightgray;
+}
+.monsterPicPlaceholderText {
+  transform: rotate(-45deg);
+  padding-top: 130px;
+}
 .gradient {
   background: linear-gradient(10deg, #a73335, white);
   height: 5px;

@@ -62,10 +62,6 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  goBack() {
-    this.location.back();
-  }
-
   ngOnInit(): void {
     this.getMonster();
     this.createMonsterTable();

@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Summon Time!</h1>
+<div mat-dialog-content>
+  <p>How many do you want to summon?</p>
+  <mat-form-field>
+    <mat-label>Number to Summon:</mat-label>
+    <input matInput [(ngModel)]="data.number" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button
+    mat-button
+    routerLink="/dashboard/{{ data?.name }}/{{ data.number }}"
+    cdkFocusInitial
+    [mat-dialog-close]
+  >
+    Ok
+  </button>
+</div>

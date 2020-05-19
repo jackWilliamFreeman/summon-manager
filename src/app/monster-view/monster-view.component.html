@@ -1,7 +1,12 @@
 <div class="monsterBorder">
   <div class="contentContainer">
     <div>
-      <img class="monsterPic" src="{{ monster?.img_url }}" />
+      <img *ngIf="monster" class="monsterPic" src="{{ monster?.img_url }}" />
+      <div *ngIf="!monster" class="monsterPicPlaceholder">
+        <div class="monsterPicPlaceholderText">
+          Select a monster to view its stats
+        </div>
+      </div>
     </div>
     <div
       contenteditable="true"

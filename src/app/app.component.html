@@ -1,11 +1,25 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>Jacks Terrible Summon Manager</h1>
+    <span></span>
+    <div style="align-items: flex-end;">
+      <a mat-button [routerLink]="'/select'"> Summon Monsters </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side">
-    Sidenav content
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/select'">
+        Home
+      </a>
+      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/about'">
+        About
+      </a>
+    </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <p>
-      <button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button>
-    </p>
-    <router-outlet></router-outlet
-  ></mat-sidenav-content>
+  <mat-sidenav-content> <router-outlet></router-outlet></mat-sidenav-content>
 </mat-sidenav-container>
