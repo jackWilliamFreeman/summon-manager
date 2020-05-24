@@ -24,6 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SelectMonsterDialogueComponent } from './select-monster/select-monster-dialogue/select-monster-dialogue.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MonsterHpDialogueComponent } from './monster-hp-dashboard/monster-hp-dialogue/monster-hp-dialogue.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MonsterAttackDashboardComponent,
     AboutComponent,
     SelectMonsterDialogueComponent,
+    MonsterHpDialogueComponent,
   ],
   imports: [
     BrowserModule,

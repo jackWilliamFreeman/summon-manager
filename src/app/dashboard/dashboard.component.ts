@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   getMonster(): void {
     const name = this.route.snapshot.paramMap.get('name');
     this.numberOfMonsters = +this.route.snapshot.paramMap.get('numberToSummon');
+    this.tempHp = +this.route.snapshot.paramMap.get('tempHp');
     this.monsterService
       .getMonster(name)
       .subscribe((response) => (this.monster = response));
@@ -39,7 +40,6 @@ export class DashboardComponent implements OnInit {
         id: i,
         name: this.monster.name,
         hit_Points: +hpNumber[0],
-        damage_Taken: 0,
         has_Advantage: false,
         remaining_HP: +hpNumber[0],
         dice_Roll: null,

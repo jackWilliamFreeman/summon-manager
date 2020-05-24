@@ -44,7 +44,7 @@ export class SelectMonsterComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(SelectMonsterDialogueComponent, {
-      width: '250px',
+      width: '350px',
       data: { number: 1, name: this.selectedMonster.name },
     });
   }

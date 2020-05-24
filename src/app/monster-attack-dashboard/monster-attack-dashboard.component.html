@@ -32,7 +32,13 @@
 
       <ng-container matColumnDef="critical">
         <th mat-header-cell *matHeaderCellDef>Critical?</th>
-        <td mat-cell *matCellDef="let monster">{{ monster.critical }}</td>
+        <td
+          mat-cell
+          *matCellDef="let monster"
+          [ngClass]="monster.critical ? 'critical' : 'blue'"
+        >
+          {{ monster.critical ? "Critical" : "" }}
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
@@ -42,7 +48,7 @@
   <mat-card-actions>
     <mat-form-field>
       <mat-label>To Hit Modifier</mat-label>
-      <input matInput [(ngModel)]="toHit" placeholder="Eg. DireWolf" />
+      <input matInput [(ngModel)]="toHit" placeholder="Enter to hit modifier" />
     </mat-form-field>
     <button mat-raised-button color="accent" (click)="rollAttacksForMonsters()">
       roll attacks

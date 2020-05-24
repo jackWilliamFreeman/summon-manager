@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DashboardItem } from '../dashboarditem';
+import { MatDialog } from '@angular/material/dialog';
+import { MonsterHpDialogueComponent } from './monster-hp-dialogue/monster-hp-dialogue.component';
 
 @Component({
   selector: 'app-monster-hp-dashboard',
@@ -8,10 +10,11 @@ import { DashboardItem } from '../dashboarditem';
 })
 export class MonsterHpDashboardComponent implements OnInit {
   @Input() dashboardMonsters: DashboardItem[];
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   tempHp: number = 0;
-  columnsToDisplay = ['id', 'name', 'damage_Taken', 'temp_HP', 'remaining_HP'];
+  columnsToDisplay = ['id', 'name', 'temp_HP', 'remaining_HP', 'manage'];
+  selectedMonster: DashboardItem;
 
   updateMonstersWithTempHp() {
     this.dashboardMonsters.forEach((monster) => {
@@ -19,4 +22,45 @@ export class MonsterHpDashboardComponent implements OnInit {
     });
   }
   ngOnInit(): void {}
+
+  onSelect(monster: DashboardItem) {
+    this.selectedMonster = monster;
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(MonsterHpDialogueComponent, {
+      width: '300px',
+      data: {
+        toHeal: 0,
+        toDamage: 0,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.handleManagementDialogueResult(result);
+    });
+  }
+
+  handleManagementDialogueResult(data: any) {
+    if (
+      +this.selectedMonster.remaining_HP + +data.toHeal <=
+      this.selectedMonster.hit_Points
+    ) {
+      this.selectedMonster.remaining_HP += +data.toHeal;
+    } else {
+      this.selectedMonster.remaining_HP = this.selectedMonster.hit_Points;
+    }
+
+    //if you take damage but less than total temp hp
+    if (this.selectedMonster.temp_HP >= +data.toDamage) {
+      this.selectedMonster.temp_HP -= +data.toDamage;
+    }
+    //if the damage is above total temp hp, then remove it and carry over remaining damage.
+    else {
+      this.selectedMonster.remaining_HP =
+        this.selectedMonster.remaining_HP -
+        (+data.toDamage - this.selectedMonster.temp_HP);
+      this.selectedMonster.temp_HP = 0;
+    }
+  }
 }

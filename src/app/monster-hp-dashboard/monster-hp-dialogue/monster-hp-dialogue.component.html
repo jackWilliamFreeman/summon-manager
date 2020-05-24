@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Manage Hp</h1>
+<div mat-dialog-content>
+  <p>Heal?</p>
+  <mat-form-field>
+    <mat-label>Enter heal amount</mat-label>
+    <input matInput [(ngModel)]="data.toHeal" />
+  </mat-form-field>
+  <p>Damage?</p>
+  <mat-form-field>
+    <mat-label>Enter damage taken</mat-label>
+    <input matInput [(ngModel)]="data.toDamage" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>
+    Ok
+  </button>
+</div>

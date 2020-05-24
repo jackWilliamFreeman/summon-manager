@@ -1,3 +1,7 @@
 table {
   width: 85%;
 }
+.critical {
+  font-size: larger;
+  font-weight: 300;
+}

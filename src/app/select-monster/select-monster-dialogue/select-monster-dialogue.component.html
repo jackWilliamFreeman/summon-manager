@@ -6,12 +6,20 @@
     <input matInput [(ngModel)]="data.number" />
   </mat-form-field>
 </div>
+<div mat-dialog-content>
+  <p>How much temp HP do they get?</p>
+  <mat-form-field>
+    <mat-label>Temp HP:</mat-label>
+    <input matInput [(ngModel)]="data.tempHp" />
+  </mat-form-field>
+</div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
   <button
     mat-button
-    routerLink="/dashboard/{{ data?.name }}/{{ data.number }}"
+    routerLink="/dashboard/{{ data?.name }}/{{ data.number }}/{{ data.tempHp }}"
     cdkFocusInitial
+    [disabled]="!this.data.tempHp || !this.data.number"
     [mat-dialog-close]
   >
     Ok
