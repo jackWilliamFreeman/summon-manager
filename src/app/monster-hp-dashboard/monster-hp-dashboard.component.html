@@ -5,16 +5,19 @@
   <mat-card-content>
     <table mat-table [dataSource]="dashboardMonsters" class="mat-elevation-z8">
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td mat-cell *matCellDef="let monster" (click)="onSelect(monster)">
-          {{ monster.id }}
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let monster">
+          <img
+            src="{{ monster.image_url }}"
+            style="width: 100px; height: 100px;"
+          />
         </td>
       </ng-container>
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let monster" (click)="onSelect(monster)">
-          {{ monster.name }}
+        <td mat-cell *matCellDef="let monster">
+          {{ monster.name }} {{ monster.id }}
         </td>
       </ng-container>
 
@@ -22,6 +25,13 @@
         <th mat-header-cell *matHeaderCellDef>Temporary Hit Points</th>
         <td mat-cell *matCellDef="let monster" (click)="onSelect(monster)">
           {{ monster.temp_HP }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hit">
+        <th mat-header-cell *matHeaderCellDef>hitDice</th>
+        <td mat-cell *matCellDef="let monster" (click)="onSelect(monster)">
+          {{ monster.hit_dice }}
         </td>
       </ng-container>
 
@@ -35,7 +45,11 @@
       <ng-container matColumnDef="manage">
         <th mat-header-cell *matHeaderCellDef>Manage</th>
         <ng-container *matCellDef="let monster">
-          <td mat-cell *ngIf="monster?.id == this.selectedMonster?.id">
+          <td
+            mat-cell
+            *ngIf="monster?.id == this.selectedMonster?.id"
+            (click)="onSelect(monster)"
+          >
             <button
               mat-raised-button
               color="primary"
@@ -53,6 +67,8 @@
     </table>
   </mat-card-content>
   <mat-card-actions>
-    <div>selected monster is: {{ selectedMonster?.id }}</div>
+    <button mat-raised-button color="accent" (click)="addMightySummonHp()">
+      Mighty Summons?
+    </button>
   </mat-card-actions>
 </mat-card>

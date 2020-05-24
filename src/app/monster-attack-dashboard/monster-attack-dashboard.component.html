@@ -3,31 +3,54 @@
   <mat-card-subtitle>Control your monsters attacks here</mat-card-subtitle>
   <mat-divider></mat-divider>
   <mat-card-content>
-    <table mat-table [dataSource]="dashboardMonsters" class="mat-elevation-z8">
+    <table
+      mat-table
+      dense
+      [dataSource]="dashboardMonsters"
+      class="mat-elevation-z8"
+    >
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td mat-cell *matCellDef="let monster">{{ monster.id }}</td>
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let monster">
+          <img
+            src="{{ monster.image_url }}"
+            style="width: 100px; height: 100px;"
+          />
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let monster">{{ monster.name }}</td>
+        <td mat-cell *matCellDef="let monster">
+          {{ monster.name }} {{ monster.id }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="advantage">
-        <th mat-header-cell *matHeaderCellDef>Has Advantage</th>
+        <th mat-header-cell *matHeaderCellDef>Attack Mode</th>
         <td mat-cell *matCellDef="let row">
-          <mat-checkbox
-            [checked]="row.has_Advantage"
-            [(ngModel)]="row.has_Advantage"
+          <mat-radio-group
+            aria-label="Select an option"
+            [(ngModel)]="row.advantageState"
           >
-          </mat-checkbox>
+            <mat-radio-button style="padding-left: 7px;" value="advantage"
+              >Advantage</mat-radio-button
+            >
+            <mat-radio-button style="padding-left: 7px;" value="normal"
+              >Normal</mat-radio-button
+            >
+            <mat-radio-button style="padding-left: 7px;" value="disadvantage"
+              >Disadvantage</mat-radio-button
+            >
+          </mat-radio-group>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="dice_Roll">
         <th mat-header-cell *matHeaderCellDef>Dice Roll</th>
-        <td mat-cell *matCellDef="let monster">{{ monster.dice_Roll }}</td>
+        <td mat-cell *matCellDef="let monster" style="font-size: large;">
+          {{ monster.dice_Roll }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="critical">
@@ -35,7 +58,7 @@
         <td
           mat-cell
           *matCellDef="let monster"
-          [ngClass]="monster.critical ? 'critical' : 'blue'"
+          [ngClass]="monster.critical ? 'critical' : 'normal'"
         >
           {{ monster.critical ? "Critical" : "" }}
         </td>

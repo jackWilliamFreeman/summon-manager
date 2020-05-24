@@ -13,8 +13,9 @@ export class MonsterHpDashboardComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   tempHp: number = 0;
-  columnsToDisplay = ['id', 'name', 'temp_HP', 'remaining_HP', 'manage'];
+  columnsToDisplay = ['id', 'name', 'temp_HP', 'hit', 'remaining_HP', 'manage'];
   selectedMonster: DashboardItem;
+  mightySummons: boolean = false;
 
   updateMonstersWithTempHp() {
     this.dashboardMonsters.forEach((monster) => {
@@ -61,6 +62,16 @@ export class MonsterHpDashboardComponent implements OnInit {
         this.selectedMonster.remaining_HP -
         (+data.toDamage - this.selectedMonster.temp_HP);
       this.selectedMonster.temp_HP = 0;
+    }
+  }
+
+  addMightySummonHp() {
+    if (!this.mightySummons) {
+      this.mightySummons = true;
+      this.dashboardMonsters.forEach((monster) => {
+        monster.remaining_HP += monster.hit_dice * 2;
+        monster.hit_Points += monster.hit_dice * 2;
+      });
     }
   }
 }

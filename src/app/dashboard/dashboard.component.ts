@@ -36,15 +36,21 @@ export class DashboardComponent implements OnInit {
     for (let i = 1; i <= this.numberOfMonsters; i++) {
       const hpNumber = this.monster.Hit_Points.split(' ', 1);
 
+      var lines = this.monster.Hit_Points.split('d', 2);
+      var hitDiceStrings = lines[0].split('(', 2);
+      var hitDice = hitDiceStrings[1];
+
       let newMonster = {
         id: i,
         name: this.monster.name,
         hit_Points: +hpNumber[0],
-        has_Advantage: false,
+        advantageState: 'normal',
         remaining_HP: +hpNumber[0],
         dice_Roll: null,
         critical: false,
         temp_HP: this.tempHp,
+        image_url: this.monster.img_url,
+        hit_dice: +hitDice[0],
       } as DashboardItem;
       this.dashboardMonsters.push(newMonster);
     }

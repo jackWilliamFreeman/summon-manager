@@ -25,6 +25,8 @@ import { SelectMonsterDialogueComponent } from './select-monster/select-monster-
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MonsterHpDialogueComponent } from './monster-hp-dashboard/monster-hp-dialogue/monster-hp-dialogue.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { MonsterHpDialogueComponent } from './monster-hp-dashboard/monster-hp-di
     MatDialogModule,
     MatCardModule,
     MatCheckboxModule,
+    MatTabsModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

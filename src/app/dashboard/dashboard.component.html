@@ -1,11 +1,15 @@
-<div style="max-width: fit-content; min-width: 800px; padding-bottom: 5px;">
-  <app-monster-attack-dashboard
-    [dashboardMonsters]="dashboardMonsters"
-  ></app-monster-attack-dashboard>
-</div>
-<div style="max-width: fit-content; min-width: 800px; padding-bottom: 5px;">
-  <app-monster-hp-dashboard
-    [dashboardMonsters]="dashboardMonsters"
-  ></app-monster-hp-dashboard>
-</div>
-<app-monster-view [monster]="monster"></app-monster-view>
+<mat-tab-group animationDuration="500ms">
+  <mat-tab label="Monster Attacks">
+    <app-monster-attack-dashboard
+      [dashboardMonsters]="dashboardMonsters"
+    ></app-monster-attack-dashboard
+  ></mat-tab>
+  <mat-tab label="Monster Health"
+    ><app-monster-hp-dashboard
+      [dashboardMonsters]="dashboardMonsters"
+    ></app-monster-hp-dashboard
+  ></mat-tab>
+  <mat-tab label="Monster Details"
+    ><app-monster-view [monster]="monster"></app-monster-view
+  ></mat-tab>
+</mat-tab-group>

@@ -2,6 +2,10 @@ table {
   width: 85%;
 }
 .critical {
-  font-size: larger;
+  font-size: large;
+  font-weight: 300;
+}
+.normal {
+  font-size: large;
   font-weight: 300;
 }
