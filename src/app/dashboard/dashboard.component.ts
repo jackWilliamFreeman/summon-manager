@@ -31,18 +31,6 @@ export class DashboardComponent implements OnInit {
       .subscribe((response) => (this.monster = response));
   }
 
-  updateMonstersWithTempHp() {
-    this.dashboardMonsters.forEach((monster) => {
-      monster.temp_HP = this.tempHp;
-    });
-  }
-
-  rollAttacksForMonsters() {
-    this.dashboardMonsters.forEach(
-      (monster) => (monster.dice_Roll = Math.floor(Math.random() * 20) + 1)
-    );
-  }
-
   createMonsterTable() {
     for (let i = 1; i <= this.numberOfMonsters; i++) {
       const hpNumber = this.monster.Hit_Points.split(' ', 1);
@@ -54,7 +42,7 @@ export class DashboardComponent implements OnInit {
         damage_Taken: 0,
         has_Advantage: false,
         remaining_HP: +hpNumber[0],
-        dice_Roll: 1,
+        dice_Roll: null,
         critical: false,
         temp_HP: this.tempHp,
       } as DashboardItem;

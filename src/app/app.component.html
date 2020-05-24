@@ -6,14 +6,14 @@
     <h1>Jacks Terrible Summon Manager</h1>
     <span></span>
     <div style="align-items: flex-end;">
-      <a mat-button [routerLink]="'/select'"> Summon Monsters </a>
+      <a mat-button [routerLink]="'/'"> Summon Monsters </a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav>
-    <mat-nav-list>
-      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/select'">
+    <mat-nav-list style="min-width: 160px;">
+      <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/'">
         Home
       </a>
       <a mat-list-item (click)="sidenav.toggle()" [routerLink]="'/about'">

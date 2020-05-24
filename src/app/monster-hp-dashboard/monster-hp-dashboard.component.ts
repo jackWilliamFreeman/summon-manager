@@ -10,7 +10,13 @@ export class MonsterHpDashboardComponent implements OnInit {
   @Input() dashboardMonsters: DashboardItem[];
   constructor() {}
 
+  tempHp: number = 0;
   columnsToDisplay = ['id', 'name', 'damage_Taken', 'temp_HP', 'remaining_HP'];
 
+  updateMonstersWithTempHp() {
+    this.dashboardMonsters.forEach((monster) => {
+      monster.temp_HP = this.tempHp;
+    });
+  }
   ngOnInit(): void {}
 }

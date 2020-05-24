@@ -22,6 +22,8 @@ import { MatListModule } from '@angular/material/list';
 import { AboutComponent } from './about/about.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SelectMonsterDialogueComponent } from './select-monster/select-monster-dialogue/select-monster-dialogue.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { SelectMonsterDialogueComponent } from './select-monster/select-monster-
     MatIconModule,
     MatListModule,
     MatDialogModule,
+    MatCardModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

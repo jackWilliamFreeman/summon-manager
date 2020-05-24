@@ -1,4 +1,4 @@
-<div class="container">
+<mat-card style="max-width: 300px;">
   <span style="width: 20px;"></span>
   <div class="fixed">
     <br />
@@ -39,8 +39,8 @@
       <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
     </table>
   </div>
-  <span style="width: 20px;"></span>
-  <div class="flex-item" style="padding-top: 5px;">
-    <app-monster-view [monster]="selectedMonster"></app-monster-view>
-  </div>
+</mat-card>
+<span style="width: 20px;"></span>
+<div class="flex-item" style="padding-top: 5px;">
+  <app-monster-view [monster]="selectedMonster"></app-monster-view>
 </div>

@@ -5,9 +5,8 @@ import { SelectMonsterComponent } from './select-monster/select-monster.componen
 import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/select', pathMatch: 'full' },
   { path: 'dashboard/:name/:numberToSummon', component: DashboardComponent },
-  { path: 'select', component: SelectMonsterComponent },
+  { path: '', component: SelectMonsterComponent },
   { path: 'about', component: AboutComponent },
 ];
 

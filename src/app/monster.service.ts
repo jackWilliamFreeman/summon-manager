@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as _monsters from './srd_5e_monsters.json';
+import * as _monsters from '../assets/srd_5e_monsters.json';
 import { Monster } from './monster';
 import { Observable, of } from 'rxjs';
 
