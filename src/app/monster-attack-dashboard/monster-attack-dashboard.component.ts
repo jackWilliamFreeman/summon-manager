@@ -30,14 +30,12 @@ export class MonsterAttackDashboardComponent implements OnInit {
         }
       }
       if (monster.advantageState === 'normal') {
-        console.log('wolf rolled with normal');
         monster.dice_Roll = rolls[1] + +this.toHit;
         if (+monster.dice_Roll - +this.toHit === 20) {
           monster.critical = true;
         }
       }
       if (monster.advantageState === 'disadvantage') {
-        console.log('wolf rolled with disadvantage');
         var disAdvRoll = Math.min.apply(null, rolls);
         monster.dice_Roll = disAdvRoll + +this.toHit;
         if (+monster.dice_Roll - +this.toHit === 20) {

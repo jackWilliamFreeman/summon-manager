@@ -1,14 +1,11 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Monster } from '../monster';
 import { MonsterService } from '../monster.service';
-import { Subject, Observable, zip } from 'rxjs';
-import { distinctUntilChanged, switchMap, debounceTime } from 'rxjs/operators';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { SelectMonsterDialogueComponent } from './select-monster-dialogue/select-monster-dialogue.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort, MatSortable } from '@angular/material/sort';
+import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-select-monster',
@@ -17,30 +14,18 @@ import { SelectMonsterDialogueComponent } from './select-monster-dialogue/select
 })
 export class SelectMonsterComponent implements OnInit {
   selectedMonster: Monster;
-  monsters: Monster[];
-  monsters$: Observable<Monster[]>;
-  columnsToDisplay = ['name', 'summon'];
-  private searchTerms = new Subject<string>();
+  dataSource: MatTableDataSource<Monster>;
+  columnsToDisplay = ['name', 'cr', 'summon'];
+
   constructor(
     private monsterService: MonsterService,
     public dialog: MatDialog
-  ) {}
-
-  ngOnInit(): void {
-    this.monsters$ = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
-      debounceTime(300),
-
-      // ignore new term if same as previous term
-      distinctUntilChanged(),
-      // switch to new search observable each time the term changes
-      switchMap((term: string) => {
-        return this.monsterService.searchMonsters(term);
-      })
-    );
-
-    setTimeout(() => this.search(''), 0);
+  ) {
+    this.dataSource = new MatTableDataSource(monsterService.getMonsters());
   }
+  @ViewChild(MatSort) sort: MatSort;
+
+  ngOnInit(): void {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(SelectMonsterDialogueComponent, {
@@ -49,19 +34,9 @@ export class SelectMonsterComponent implements OnInit {
     });
   }
 
-  // Push a search term into the observable stream.
-  search(term: string): void {
-    this.searchTerms.next(term);
-  }
-
-  // Push a search term into the observable stream.
-  searchMonster(event: Event): void {
-    var searchTerm = (event.target as HTMLInputElement).value;
-    this.searchTerms.next(searchTerm);
-  }
-
-  getMonsters() {
-    this.monsterService.getMonsters();
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   onSelect(monster: Monster) {

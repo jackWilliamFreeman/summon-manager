@@ -9,20 +9,20 @@ import { Observable, of } from 'rxjs';
 export class MonsterService {
   constructor() {}
 
-  getMonsters(): Observable<Monster[]> {
-    return of((_monsters as any).default as Monster[]);
+  getMonsters(): Monster[] {
+    return this.parseMonsterFile();
   }
 
-  searchMonsters(term: string): Observable<Monster[]> {
+  parseMonsterFile(): Monster[] {
     var monsters = (_monsters as any).default as Monster[];
-    var filteredMonsters = monsters.filter((m) =>
-      m.name.toLowerCase().includes(term.toLowerCase())
-    );
-    return of(filteredMonsters);
+    monsters.forEach((monster) => {
+      monster.CRNumber = monster.Challenge.split('(', 1)[0];
+    });
+    return monsters;
   }
 
   getMonster(name: string): Observable<Monster> {
-    var monsters = (_monsters as any).default as Monster[];
+    var monsters = this.parseMonsterFile();
     var monster = monsters.find((m) => m.name == name);
     return of(monster);
   }

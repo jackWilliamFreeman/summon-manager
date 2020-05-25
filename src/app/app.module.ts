@@ -6,7 +6,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SelectMonsterComponent } from './select-monster/select-monster.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MonsterViewComponent } from './monster-view/monster-view.component';
-import { MonsterSearchComponent } from './monster-search/monster-search.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MonsterHpDashboardComponent } from './monster-hp-dashboard/monster-hp-dashboard.component';
@@ -27,6 +26,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MonsterHpDialogueComponent } from './monster-hp-dashboard/monster-hp-dialogue/monster-hp-dialogue.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,6 @@ import { MatRadioModule } from '@angular/material/radio';
     DashboardComponent,
     SelectMonsterComponent,
     MonsterViewComponent,
-    MonsterSearchComponent,
     MonsterHpDashboardComponent,
     MonsterAttackDashboardComponent,
     AboutComponent,
@@ -60,6 +60,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatCheckboxModule,
     MatTabsModule,
     MatRadioModule,
+    MatSelectModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

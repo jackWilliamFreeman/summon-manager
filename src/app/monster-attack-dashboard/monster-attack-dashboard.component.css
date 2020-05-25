@@ -1,6 +1,3 @@
-table {
-  width: 85%;
-}
 .critical {
   font-size: large;
   font-weight: 300;
@@ -8,4 +5,10 @@ table {
 .normal {
   font-size: large;
   font-weight: 300;
+}
+.mat-column-advantage {
+  flex: 0 0 30%;
+}
+.mat-column-critical {
+  flex: 0 0 10%;
 }

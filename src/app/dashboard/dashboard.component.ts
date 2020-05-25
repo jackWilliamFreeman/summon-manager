@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
         critical: false,
         temp_HP: this.tempHp,
         image_url: this.monster.img_url,
-        hit_dice: +hitDice[0],
+        hit_dice: +hitDice,
       } as DashboardItem;
       this.dashboardMonsters.push(newMonster);
     }

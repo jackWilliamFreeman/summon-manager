@@ -13,7 +13,7 @@ export class MonsterHpDashboardComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   tempHp: number = 0;
-  columnsToDisplay = ['id', 'name', 'temp_HP', 'hit', 'remaining_HP', 'manage'];
+  columnsToDisplay = ['id', 'name', 'temp_HP', 'remaining_HP', 'manage'];
   selectedMonster: DashboardItem;
   mightySummons: boolean = false;
 
