@@ -6,7 +6,11 @@
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" />
       </mat-form-field>
       <br />
-      <mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+      <mat-table
+        matSort
+        [dataSource]="filteredMonsters"
+        class="mat-elevation-z8"
+      >
         <ng-container matColumnDef="name">
           <mat-header-cell mat-sort-header *matHeaderCellDef
             >Name</mat-header-cell

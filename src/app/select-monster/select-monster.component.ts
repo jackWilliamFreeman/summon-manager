@@ -14,18 +14,20 @@ import { Sort } from '@angular/material/sort';
 })
 export class SelectMonsterComponent implements OnInit {
   selectedMonster: Monster;
-  dataSource: MatTableDataSource<Monster>;
   columnsToDisplay = ['name', 'cr', 'summon'];
+  monsters: Monster[];
+  filteredMonsters: Monster[];
 
   constructor(
     private monsterService: MonsterService,
     public dialog: MatDialog
-  ) {
-    this.dataSource = new MatTableDataSource(monsterService.getMonsters());
-  }
+  ) {}
   @ViewChild(MatSort) sort: MatSort;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.monsters = this.monsterService.getMonsters();
+    this.filteredMonsters = this.monsters;
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(SelectMonsterDialogueComponent, {
@@ -36,7 +38,9 @@ export class SelectMonsterComponent implements OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.filteredMonsters = this.monsters.filter((monster) =>
+      monster.name.toLowerCase().includes(filterValue.toLowerCase())
+    );
   }
 
   onSelect(monster: Monster) {
