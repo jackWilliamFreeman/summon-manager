@@ -30,5 +30,6 @@ export interface Monster {
   Damage_Resistances: string;
   Damage_Vulnerabilities: string;
   Reactions: string;
-  CRNumber: string;
+  CRNumber: number;
+  CRString: string;
 }

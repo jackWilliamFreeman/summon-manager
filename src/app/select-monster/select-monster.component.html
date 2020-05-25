@@ -8,6 +8,7 @@
       <br />
       <mat-table
         matSort
+        (matSortChange)="sortData($event)"
         [dataSource]="filteredMonsters"
         class="mat-elevation-z8"
       >
@@ -25,7 +26,7 @@
             >CR</mat-header-cell
           >
           <mat-cell *matCellDef="let monster" (click)="onSelect(monster)">
-            {{ monster.CRNumber }}
+            {{ monster.CRString }}
           </mat-cell>
         </ng-container>
 
